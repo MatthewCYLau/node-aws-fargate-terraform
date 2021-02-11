@@ -53,7 +53,7 @@ resource "aws_ecs_service" "staging" {
   load_balancer {
     target_group_arn = aws_lb_target_group.staging.arn
     container_name   = "dummyapi"
-    container_port   = 80
+    container_port   = 3000
   }
 
   depends_on = [aws_lb_listener.https_forward, aws_iam_role_policy_attachment.ecs_task_execution_role]
