@@ -1,53 +1,39 @@
 [
   {
-    "dnsSearchDomains": null,
-    "environmentFiles": null,
-    "logConfiguration": null,
-    "entryPoint": null,
+    "name": "dummyapi",
+    "image": "${aws_ecr_repository}:${tag}",
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "dummyapi-staging-service",
+        "awslogs-group": "awslogs-dummyapi-staging"
+      }
+    },
     "portMappings": [
       {
-        "hostPort": 80,
-        "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 3000,
+        "hostPort": 3000,
+        "protocol": "tcp"
       }
     ],
-    "command": null,
-    "linuxParameters": null,
-    "cpu": 0,
+    "cpu": 1,
     "environment": [
       {
         "name": "NODE_ENV",
         "value": "production"
       }
     ],
-    "resourceRequirements": null,
-    "ulimits": null,
-    "dnsServers": null,
+    "ulimits": [
+      {
+        "name": "nofile",
+        "softLimit": 65536,
+        "hardLimit": 65536
+      }
+    ],
     "mountPoints": [],
-    "workingDirectory": null,
-    "secrets": null,
-    "dockerSecurityOptions": null,
-    "memory": null,
-    "memoryReservation": 512,
-    "volumesFrom": [],
-    "stopTimeout": null,
-    "image": "${aws_ecr_repository}",
-    "startTimeout": null,
-    "firelensConfiguration": null,
-    "dependsOn": null,
-    "disableNetworking": null,
-    "interactive": null,
-    "healthCheck": null,
-    "essential": true,
-    "links": null,
-    "hostname": null,
-    "extraHosts": null,
-    "pseudoTerminal": null,
-    "user": null,
-    "readonlyRootFilesystem": null,
-    "dockerLabels": null,
-    "systemControls": null,
-    "privileged": null,
-    "name": "node_express_ecs_container"
+    "memory": 2048,
+    "volumesFrom": []
   }
 ]
