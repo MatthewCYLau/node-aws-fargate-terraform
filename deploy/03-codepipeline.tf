@@ -44,7 +44,7 @@ resource "aws_codepipeline" "node_express_ecs_codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = "node_aws_fargate_app"
+        ProjectName = aws_codebuild_project.node_aws_fargate_app.name
       }
     }
   }
