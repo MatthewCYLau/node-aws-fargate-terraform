@@ -9,7 +9,7 @@ variable "github_project_name" {
 }
 
 variable "bucket_name" {
-  default = "node-express-ecs"
+  default = "node-aws-fargate-app"
 }
 
 variable "default_region" {

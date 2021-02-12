@@ -1,8 +1,8 @@
-resource "aws_cloudwatch_log_group" "dummyapi" {
-  name = "awslogs-dummyapi-staging"
+resource "aws_cloudwatch_log_group" "node-aws-fargate-app" {
+  name = "awslogs-node-aws-fargate-app-staging"
 
   tags = {
     Environment = "staging"
-    Application = "dummyapi"
+    Application = "node-aws-fargate-app"
   }
 }

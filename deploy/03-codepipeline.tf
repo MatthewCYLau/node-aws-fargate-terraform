@@ -7,7 +7,7 @@ resource "aws_codepipeline" "node_express_ecs_codepipeline" {
 
 
   artifact_store {
-    location = aws_s3_bucket.node_express_ecs_s3_bucket.bucket
+    location = aws_s3_bucket.node_app.bucket
     type     = "S3"
   }
 
@@ -44,7 +44,7 @@ resource "aws_codepipeline" "node_express_ecs_codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = "node_express_ecs_codebuild_project"
+        ProjectName = "node_aws_fargate_app"
       }
     }
   }

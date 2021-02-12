@@ -1,6 +1,6 @@
-resource "aws_s3_bucket" "node_express_ecs_s3_bucket" {
+resource "aws_s3_bucket" "node_app" {
   bucket        = var.bucket_name
-  acl           = "public-read"
+  acl           = "private"
   force_destroy = true
 
 }

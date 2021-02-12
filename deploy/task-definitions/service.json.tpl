@@ -1,14 +1,14 @@
 [
   {
-    "name": "dummyapi",
+    "name": "node-aws-fargate-app",
     "image": "${aws_ecr_repository}:${tag}",
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
         "awslogs-region": "us-east-1",
-        "awslogs-stream-prefix": "dummyapi-staging-service",
-        "awslogs-group": "awslogs-dummyapi-staging"
+        "awslogs-stream-prefix": "node-aws-fargate-app-staging-service",
+        "awslogs-group": "awslogs-node-aws-fargate-app-staging"
       }
     },
     "portMappings": [

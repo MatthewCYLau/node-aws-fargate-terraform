@@ -35,8 +35,8 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "s3:PutObject"
       ],
       "Resource": [
-        "${aws_s3_bucket.node_express_ecs_s3_bucket.arn}",
-        "${aws_s3_bucket.node_express_ecs_s3_bucket.arn}/*"
+        "${aws_s3_bucket.node_app.arn}",
+        "${aws_s3_bucket.node_app.arn}/*"
       ]
     },
     {
@@ -45,7 +45,9 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "codebuild:BatchGetBuilds",
         "codebuild:StartBuild"
       ],
-      "Resource": "*"
+      "Resource": [
+        "${aws_codebuild_project.node_aws_fargate_app.arn}"
+      ]
     },
     {
       "Effect": "Allow",

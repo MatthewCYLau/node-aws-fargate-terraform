@@ -7,7 +7,7 @@ data "template_file" "node_app" {
 }
 
 resource "aws_ecs_task_definition" "service" {
-  family                   = "dummyapi-staging"
+  family                   = "node-aws-fargate-app-staging"
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   cpu                      = 256
@@ -16,7 +16,7 @@ resource "aws_ecs_task_definition" "service" {
   container_definitions    = data.template_file.node_app.rendered
   tags = {
     Environment = "staging"
-    Application = "dummyapi"
+    Application = "node-aws-fargate-app"
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_ecs_service" "staging" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.staging.arn
-    container_name   = "dummyapi"
+    container_name   = "node-aws-fargate-app"
     container_port   = 3000
   }
 
@@ -44,7 +44,7 @@ resource "aws_ecs_service" "staging" {
 
   tags = {
     Environment = "staging"
-    Application = "dummyapi"
+    Application = "node-aws-fargate-app"
   }
 }
 

@@ -1,6 +1,6 @@
-resource "aws_codebuild_project" "node_express_ecs_codebuild_project" {
-  name          = "node_express_ecs_codebuild_project"
-  description   = "node_express_ecs_codebuild_project"
+resource "aws_codebuild_project" "node_aws_fargate_app" {
+  name          = "node_aws_fargate_app"
+  description   = "Node AWS Fargate App"
   build_timeout = "5"
   service_role  = aws_iam_role.node_express_ecs_codebuild_role.arn
 
@@ -32,7 +32,7 @@ resource "aws_codebuild_project" "node_express_ecs_codebuild_project" {
 
     environment_variable {
       name  = "IMAGE_NAME"
-      value = "sample-node-app"
+      value = "node-aws-fargate-app"
     }
 
     environment_variable {

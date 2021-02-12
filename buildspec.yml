@@ -27,6 +27,6 @@ phases:
       - docker push $ECR_REPO_URL:latest
       - docker push $ECR_REPO_URL:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"dummyapi","imageUri":"%s"}]' $ECR_REPO_URL:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"node-aws-fargate-app","imageUri":"%s"}]' $ECR_REPO_URL:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
