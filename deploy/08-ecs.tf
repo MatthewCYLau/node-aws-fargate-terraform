@@ -49,5 +49,5 @@ resource "aws_ecs_service" "staging" {
 }
 
 resource "aws_ecs_cluster" "staging" {
-  name = "tf-ecs-cluster"
+  name = "node-app-ecs-cluster"
 }
