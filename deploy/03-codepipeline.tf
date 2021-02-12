@@ -1,8 +1,8 @@
 
 
 resource "aws_codepipeline" "node_express_ecs_codepipeline" {
-  name     = "node_express_ecs_codepipeline"
-  role_arn = aws_iam_role.node_express_ecs_codepipeline_role.arn
+  name       = "node_express_ecs_codepipeline"
+  role_arn   = aws_iam_role.node_express_ecs_codepipeline_role.arn
   depends_on = [aws_ecs_service.staging]
 
 
@@ -61,8 +61,8 @@ resource "aws_codepipeline" "node_express_ecs_codepipeline" {
       version         = "1"
 
       configuration = {
-        ClusterName = "tf-ecs-cluster"
-        ServiceName = "staging"
+        ClusterName = aws_ecs_cluster.staging.name
+        ServiceName = aws_ecs_service.staging.name
       }
     }
   }

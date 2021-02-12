@@ -1,24 +1,7 @@
-resource "aws_ecs_task_definition" "node_express_ecs_definition" {
-  family                   = "node_express_ecs_definition"
-  container_definitions    = data.template_file.task_definition_service_json.rendered
-  requires_compatibilities = ["EC2"]
-  task_role_arn            = "arn:aws:iam::830663695860:role/ecsTaskExecutionRole"
-  execution_role_arn       = "arn:aws:iam::830663695860:role/ecsTaskExecutionRole"
-
-}
-
-data "template_file" "task_definition_service_json" {
-  template = file("task-definitions/service.json.tpl")
-  vars = {
-    aws_ecr_repository = aws_ecr_repository.app_image_repository.repository_url
-    tag                = "latest"
-  }
-}
-
 data "template_file" "node_app" {
   template = file("task-definitions/service.json.tpl")
   vars = {
-    aws_ecr_repository = aws_ecr_repository.app_image_repository.repository_url
+    aws_ecr_repository = aws_ecr_repository.node_app.repository_url
     tag                = "latest"
   }
 }

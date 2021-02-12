@@ -37,7 +37,7 @@ resource "aws_codebuild_project" "node_express_ecs_codebuild_project" {
 
     environment_variable {
       name  = "ECR_REPO_URL"
-      value = aws_ecr_repository.app_image_repository.repository_url
+      value = aws_ecr_repository.node_app.repository_url
     }
   }
 
