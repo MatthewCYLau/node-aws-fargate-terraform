@@ -11,6 +11,7 @@ data "template_file" "task_definition_service_json" {
   template = file("task-definitions/service.json.tpl")
   vars = {
     aws_ecr_repository = aws_ecr_repository.app_image_repository.repository_url
+    tag                = "latest"
   }
 }
 
