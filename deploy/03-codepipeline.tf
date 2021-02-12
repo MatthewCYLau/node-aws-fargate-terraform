@@ -3,6 +3,7 @@
 resource "aws_codepipeline" "node_express_ecs_codepipeline" {
   name     = "node_express_ecs_codepipeline"
   role_arn = aws_iam_role.node_express_ecs_codepipeline_role.arn
+  depends_on = [aws_ecs_service.staging]
 
 
   artifact_store {
