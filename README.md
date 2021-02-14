@@ -42,7 +42,7 @@ terraform apply # deploys AWS stack. See output for AWS loadbalancer DNS name
 terraform destroy # destroys AWS stack
 ```
 
-When prompted for `github_token`, provide the value and hit Return
+When prompted for `github_token`, provide the value and hit Return. Alternatively, create a [local environment variable](https://www.terraform.io/docs/language/values/variables.html#environment-variables) named `TF_VAR_github_token`
 
 ## Contributing
 
