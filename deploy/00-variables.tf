@@ -1,21 +1,11 @@
 variable "github_token" {}
 
-variable "github_username" {
-  default = "MatthewCYLau"
-}
+variable "github_username" {}
 
-variable "github_project_name" {
-  default = "node-aws-fargate-terraform"
-}
+variable "github_project_name" {}
 
-variable "bucket_name" {
-  default = "node-aws-fargate-app"
-}
+variable "bucket_name" {}
 
-variable "default_region" {
-  default = "us-east-1"
-}
+variable "default_region" {}
 
-variable "docker_username" {
-  default = "matlau"
-}
+variable "docker_username" {}
