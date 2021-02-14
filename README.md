@@ -23,19 +23,14 @@ aws configure # configure your AWS CLI profile
 
 - Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `DockerHubAccessToken` with key `DOCKER_HUB_ACCESS_TOKEN`, and your [Docker access token](https://docs.docker.com/docker-hub/access-tokens/) as value
 
-- Populate `deploy/00-variables.tf`
+- Populate `terraform.tfvars`:
 
 ```bash
-variable "github_token" {}
-
-variable "github_username" {
-  default = "your_github_username"
-}
-
-variable "github_project_name" {
-  default = "your_github_project_name"
-}
-# and a few more variables...
+default_region      = "us-east-1"
+docker_username     = "matlau"
+github_username     = "MatthewCYLau"
+github_project_name = "node-aws-fargate-terraform"
+bucket_name         = "node-aws-fargate-app"
 ```
 
 ## Deploy
