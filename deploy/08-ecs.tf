@@ -1,8 +1,9 @@
 data "template_file" "node_app" {
   template = file("task-definitions/service.json.tpl")
   vars = {
-    aws_ecr_repository = aws_ecr_repository.node_app.repository_url
-    tag                = "latest"
+    aws_ecr_repository            = aws_ecr_repository.node_app.repository_url
+    tag                           = "latest"
+    aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.node-aws-fargate-app.name
   }
 }
 

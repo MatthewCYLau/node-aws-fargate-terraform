@@ -7,8 +7,8 @@
       "logDriver": "awslogs",
       "options": {
         "awslogs-region": "us-east-1",
-        "awslogs-stream-prefix": "node-aws-fargate-app-staging-service",
-        "awslogs-group": "awslogs-node-aws-fargate-app-staging"
+        "awslogs-stream-prefix": "${aws_cloudwatch_log_group_name}-service",
+        "awslogs-group": "${aws_cloudwatch_log_group_name}"
       }
     },
     "portMappings": [
