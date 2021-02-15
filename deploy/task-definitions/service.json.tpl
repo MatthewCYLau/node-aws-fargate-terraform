@@ -23,8 +23,16 @@
       {
         "name": "NODE_ENV",
         "value": "production"
+      },
+      {
+        "name": "JWT_SECRET",
+        "value": "superscretwhichshouldnotbehere"
       }
     ],
+    "secrets": [{
+      "name": "MONGO_URI",
+      "valueFrom": "arn:aws:secretsmanager:us-east-1:830663695860:secret:MongoURI-n3Bh38"
+    }]
     "ulimits": [
       {
         "name": "nofile",

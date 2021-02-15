@@ -41,7 +41,7 @@ resource "aws_ecs_service" "staging" {
     container_port   = 3000
   }
 
-  depends_on = [aws_lb_listener.https_forward, aws_iam_role_policy_attachment.ecs_task_execution_role]
+  depends_on = [aws_lb_listener.https_forward, aws_iam_role_policy.ecs_task_execution_role]
 
   tags = {
     Environment = "staging"
