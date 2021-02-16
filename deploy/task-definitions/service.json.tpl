@@ -30,9 +30,9 @@
       }
     ],
     "secrets": [{
-      "name": "MONGO_URI",
-      "valueFrom": "arn:aws:secretsmanager:us-east-1:830663695860:secret:MongoURI-n3Bh38"
-    }]
+      "name": "MONGO_PASSWORD",
+      "valueFrom": "${mongo_password_secret_arn}"
+    }],
     "ulimits": [
       {
         "name": "nofile",

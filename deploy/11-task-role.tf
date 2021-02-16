@@ -43,7 +43,7 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
         "secretsmanager:GetSecretValue"
       ],
       "Resource": [
-        "arn:aws:secretsmanager:us-east-1:830663695860:secret:MongoURI-n3Bh38"
+        "${var.mongo_password_secret_arn}"
       ]
     }
   ]

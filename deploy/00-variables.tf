@@ -9,3 +9,5 @@ variable "bucket_name" {}
 variable "default_region" {}
 
 variable "docker_username" {}
+
+variable "mongo_password_secret_arn" {}
