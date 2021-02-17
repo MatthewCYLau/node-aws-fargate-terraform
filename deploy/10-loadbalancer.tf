@@ -26,7 +26,7 @@ resource "aws_lb_listener" "https_forward" {
 }
 
 resource "aws_lb_target_group" "staging" {
-  name        = "node-aws-fargate-app-alb-tg"
+  name        = "${var.app_name}-${var.environment}-alb-tg"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.vpc.id
