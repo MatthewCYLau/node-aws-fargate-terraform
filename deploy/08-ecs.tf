@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "service" {
 }
 
 resource "aws_ecs_service" "staging" {
-  name                       = "staging"
+  name                       = var.environment
   cluster                    = aws_ecs_cluster.staging.id
   task_definition            = aws_ecs_task_definition.service.arn
   desired_count              = 1
@@ -42,18 +42,18 @@ resource "aws_ecs_service" "staging" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.staging.arn
-    container_name   = "node-aws-fargate-app"
+    container_name   = var.app_name
     container_port   = 3000
   }
 
   depends_on = [aws_lb_listener.https_forward, aws_iam_role_policy.ecs_task_execution_role]
 
   tags = {
-    Environment = "staging"
-    Application = "node-aws-fargate-app"
+    Environment = var.environment
+    Application = var.app_name
   }
 }
 
 resource "aws_ecs_cluster" "staging" {
-  name = "node-app-ecs-cluster"
+  name = "${var.app_name}-cluster"
 }

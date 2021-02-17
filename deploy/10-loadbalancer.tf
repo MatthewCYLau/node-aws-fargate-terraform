@@ -5,8 +5,8 @@ resource "aws_lb" "staging" {
   security_groups    = [aws_security_group.lb.id]
 
   tags = {
-    Environment = "staging"
-    Application = "node-aws-fargate-app"
+    Environment = var.environment
+    Application = var.app_name
   }
 }
 
