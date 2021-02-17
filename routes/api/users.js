@@ -7,6 +7,19 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User");
 
+// @route    GET api/users
+// @desc     Get all users because why not
+// @access   Public
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find().sort({ date: -1 });
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    POST api/users
 // @desc     Register user
 // @access   Public

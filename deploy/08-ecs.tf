@@ -9,7 +9,7 @@ data "template_file" "node_app" {
 }
 
 resource "aws_ecs_task_definition" "service" {
-  family                   = "node-aws-fargate-app-staging"
+  family                   = "${var.app_name}-${var.environment}"
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   cpu                      = 256
@@ -17,8 +17,8 @@ resource "aws_ecs_task_definition" "service" {
   requires_compatibilities = ["FARGATE"]
   container_definitions    = data.template_file.node_app.rendered
   tags = {
-    Environment = "staging"
-    Application = "node-aws-fargate-app"
+    Environment = var.environment
+    Application = var.app_name
   }
 }
 

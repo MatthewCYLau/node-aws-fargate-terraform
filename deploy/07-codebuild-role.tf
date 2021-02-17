@@ -29,7 +29,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         {
             "Effect": "Allow",
             "Resource": [
-                "arn:aws:s3:::${var.bucket_name}/*"
+                "arn:aws:s3:::${var.app_name}/*"
             ],
             "Action": [
                 "s3:PutObject",

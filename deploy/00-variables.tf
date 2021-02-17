@@ -4,7 +4,9 @@ variable "github_username" {}
 
 variable "github_project_name" {}
 
-variable "bucket_name" {}
+variable "app_name" {}
+
+variable "environment" {}
 
 variable "default_region" {}
 
