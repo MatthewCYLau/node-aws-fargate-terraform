@@ -37,6 +37,11 @@ resource "aws_route_table_association" "route_table_association" {
   route_table_id = aws_route_table.public.id
 }
 
+resource "aws_route_table_association" "route_table_association2" {
+  subnet_id      = aws_subnet.pub_subnet2.id
+  route_table_id = aws_route_table.public.id
+}
+
 resource "aws_security_group" "lb" {
   name        = "lb-sg"
   vpc_id      = aws_vpc.vpc.id
