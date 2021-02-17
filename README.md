@@ -2,7 +2,7 @@
 
 A reference project to deploy a Node Express app onto Amazon ECS on AWS Fargate with Terraform, inspired by [this](https://dev.to/txheo/a-guide-to-provisioning-aws-ecs-fargate-using-terraform-1joo) tutorial documentation
 
-![AWS Architecture](img/aws-node-ecs.JPG)
+![AWS Architecture](img/aws-node-ecs2.JPG)
 
 ## Pre-requisite
 
