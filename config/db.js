@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongoConnectionString = `mongodb+srv://admin-matlau:${process.env.MONGO_PASSWORD}@mattewcylau-5ltcp.mongodb.net/node-express-mongodb-docker?retryWrites=true`;
+const mongoConnectionString = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/${process.env.MONGO_DB_NAME}?retryWrites=true`;
 
 const connectDB = async () => {
   try {

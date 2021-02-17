@@ -27,6 +27,18 @@
       {
         "name": "JWT_SECRET",
         "value": "superscretwhichshouldnotbehere"
+      },
+      {
+        "name": "MONGO_USERNAME",
+        "value": "${mongo_username}"
+      },
+      {
+        "name": "MONGO_HOST",
+        "value": "${mongo_host}"
+      },
+      {
+        "name": "MONGO_DB_NAME",
+        "value": "${mongo_database_name}"
       }
     ],
     "secrets": [{
