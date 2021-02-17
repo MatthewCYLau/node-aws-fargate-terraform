@@ -3,6 +3,7 @@ data "template_file" "node_app" {
   vars = {
     aws_ecr_repository            = aws_ecr_repository.node_app.repository_url
     tag                           = "latest"
+    container_name                = var.app_name
     aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.node-aws-fargate-app.name
     mongo_password_secret_arn     = "${var.mongo_password_secret_arn}:MONGO_PASSWORD::"
   }

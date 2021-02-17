@@ -1,6 +1,6 @@
 [
   {
-    "name": "node-aws-fargate-app",
+    "name": "${container_name}",
     "image": "${aws_ecr_repository}:${tag}",
     "essential": true,
     "logConfiguration": {
