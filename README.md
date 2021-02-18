@@ -2,6 +2,8 @@
 
 A reference project to deploy a Node Express app onto Amazon ECS on AWS Fargate with Terraform, inspired by [this](https://dev.to/txheo/a-guide-to-provisioning-aws-ecs-fargate-using-terraform-1joo) tutorial documentation
 
+A microservice which creates, and authenticates users from a MongoDB database
+
 ![AWS Architecture](img/aws-node-ecs2.JPG)
 
 ## Pre-requisite
@@ -52,6 +54,20 @@ terraform destroy # destroys AWS stack
 ```
 
 When prompted for `github_token`, provide the value and hit Return. Alternatively, create a [local environment variable](https://www.terraform.io/docs/language/values/variables.html#environment-variables) named `TF_VAR_github_token`
+
+## Usage
+
+- Create a user by making `POST` request to `/api/users` with the following JSON body:
+
+```json
+{
+  "email": "jon@doe.com",
+  "password": "password",
+  "name": "jondoe"
+}
+```
+
+- See Postman collection [here](https://www.getpostman.com/collections/471ace71d8c991681342)
 
 ## Contributing
 
