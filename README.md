@@ -15,7 +15,7 @@ aws --version # prints aws-cli/2.0.36 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 aws configure # configure your AWS CLI profile
 ```
 
-- You have created a database on [MongoDB Atlast](https://www.mongodb.com/cloud/atlas) and have obtained a database connection string
+- You have created a database on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and have obtained a database connection string
 
 ## Configuration
 
