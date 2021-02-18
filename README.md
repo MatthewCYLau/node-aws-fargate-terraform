@@ -15,6 +15,8 @@ aws --version # prints aws-cli/2.0.36 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 aws configure # configure your AWS CLI profile
 ```
 
+- You have created a database on [MongoDB Atlast](https://www.mongodb.com/cloud/atlas) and have obtained a database connection string
+
 ## Configuration
 
 - Create a Github project, and generate a personal access token (see doc [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token))
@@ -23,14 +25,21 @@ aws configure # configure your AWS CLI profile
 
 - Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `DockerHubAccessToken` with key `DOCKER_HUB_ACCESS_TOKEN`, and your [Docker access token](https://docs.docker.com/docker-hub/access-tokens/) as value
 
+- Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `MongoPassword` with key `MONGO_PASSWORD`, and your MongoDB password as value
+
 - Populate `terraform.tfvars`:
 
 ```bash
-default_region      = "us-east-1"
-docker_username     = "matlau"
-github_username     = "MatthewCYLau"
-github_project_name = "node-aws-fargate-terraform"
-app_name         = "node-aws-fargate-app"
+default_region            = "us-east-1"
+docker_username           = "matlau"
+github_username           = "MatthewCYLau"
+github_project_name       = "node-aws-fargate-terraform"
+app_name                  = "node-aws-fargate-app"
+environment               = "staging"
+mongo_username            = "admin-matlau"
+mongo_host                = "mattewcylau-5ltcp.mongodb.net"
+mongo_database_name       = "node-aws-fargate-app"
+mongo_password_secret_arn = <MongoPassword Secret ARN>
 ```
 
 ## Deploy

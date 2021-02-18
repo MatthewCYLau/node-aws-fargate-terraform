@@ -15,8 +15,8 @@ app.use("/api/auth", require("./routes/api/auth"));
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello world from a Node.js app!");
+app.get("/ping", (req, res) => {
+  res.send("pong!");
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
