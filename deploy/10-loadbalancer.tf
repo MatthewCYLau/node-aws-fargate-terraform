@@ -1,6 +1,6 @@
-resource "aws_lb" "staging" {
+resource "aws_lb" "this" {
   name               = "alb"
-  subnets            = [aws_subnet.pub_subnet.id, aws_subnet.pub_subnet2.id]
+  subnets            = aws_subnet.public_subnets[*].id
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb.id]
 
@@ -11,21 +11,21 @@ resource "aws_lb" "staging" {
 }
 
 output "aws_lb_dns_name" {
-  value = aws_lb.staging.dns_name
+  value = aws_lb.this.dns_name
 }
 
 resource "aws_lb_listener" "https_forward" {
-  load_balancer_arn = aws_lb.staging.arn
+  load_balancer_arn = aws_lb.this.arn
   port              = 80
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.staging.arn
+    target_group_arn = aws_lb_target_group.this.arn
   }
 }
 
-resource "aws_lb_target_group" "staging" {
+resource "aws_lb_target_group" "this" {
   name        = "${var.app_name}-alb-tg"
   port        = 80
   protocol    = "HTTP"

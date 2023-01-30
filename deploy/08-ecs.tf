@@ -26,9 +26,9 @@ resource "aws_ecs_task_definition" "service" {
   }
 }
 
-resource "aws_ecs_service" "staging" {
+resource "aws_ecs_service" "production" {
   name                       = var.environment
-  cluster                    = aws_ecs_cluster.staging.id
+  cluster                    = aws_ecs_cluster.this.id
   task_definition            = aws_ecs_task_definition.service.arn
   desired_count              = 1
   deployment_maximum_percent = 250
@@ -36,12 +36,12 @@ resource "aws_ecs_service" "staging" {
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
-    subnets          = [aws_subnet.pub_subnet.id, aws_subnet.pub_subnet2.id]
+    subnets          = aws_subnet.public_subnets[*].id
     assign_public_ip = true
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.staging.arn
+    target_group_arn = aws_lb_target_group.this.arn
     container_name   = var.app_name
     container_port   = 3000
   }
@@ -54,6 +54,6 @@ resource "aws_ecs_service" "staging" {
   }
 }
 
-resource "aws_ecs_cluster" "staging" {
+resource "aws_ecs_cluster" "this" {
   name = "${var.app_name}-cluster"
 }

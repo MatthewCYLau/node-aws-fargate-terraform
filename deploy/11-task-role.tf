@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "ecs_task_execution_role" {
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name               = "ecs-staging-execution-role"
+  name               = "ecs-task-execution-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_task_execution_role.json
 }
 

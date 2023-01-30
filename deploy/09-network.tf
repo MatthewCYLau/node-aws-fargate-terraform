@@ -1,5 +1,5 @@
 resource "aws_vpc" "vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = local.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
@@ -11,34 +11,29 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
 }
 
-resource "aws_subnet" "pub_subnet" {
+resource "aws_subnet" "public_subnets" {
+  count             = length(local.availability_zones)
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "10.0.0.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = cidrsubnet(local.vpc_cidr, 8, count.index)
+  availability_zone = local.availability_zones[count.index]
 
-}
-resource "aws_subnet" "pub_subnet2" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  tags = {
+    Name = "Public subnet ${count.index}"
+  }
+
 }
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.vpc.id
-
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.internet_gateway.id
   }
 }
 
-resource "aws_route_table_association" "route_table_association" {
-  subnet_id      = aws_subnet.pub_subnet.id
-  route_table_id = aws_route_table.public.id
-}
-
-resource "aws_route_table_association" "route_table_association2" {
-  subnet_id      = aws_subnet.pub_subnet2.id
+resource "aws_route_table_association" "route_table_associations" {
+  count          = 2
+  subnet_id      = element(aws_subnet.public_subnets.*.id, count.index)
   route_table_id = aws_route_table.public.id
 }
 
