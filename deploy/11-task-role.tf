@@ -30,13 +30,19 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
          "Action":[
             "ecr:BatchCheckLayerAvailability",
             "ecr:GetDownloadUrlForLayer",
-            "ecr:BatchGetImage",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents"
+            "ecr:BatchGetImage"
          ],
          "Resource":[
             "${aws_ecr_repository.node_app.arn}"
          ]
+      },
+       {
+         "Effect":"Allow",
+         "Action":[
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+         ],
+         "Resource":"arn:aws:logs:*:*:*"
       },
       {
          "Action":[
