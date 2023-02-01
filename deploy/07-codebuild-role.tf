@@ -54,7 +54,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
             "Effect": "Allow",
             "Action": [
                 "ecr:CompleteLayerUpload",
-                "ecr:GetAuthorizationToken",
                 "ecr:UploadLayerPart",
                 "ecr:InitiateLayerUpload",
                 "ecr:BatchCheckLayerAvailability",
@@ -63,6 +62,13 @@ resource "aws_iam_role_policy" "codebuild_policy" {
             "Resource": [
               "${aws_ecr_repository.node_app.arn}"
             ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
