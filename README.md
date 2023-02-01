@@ -41,7 +41,6 @@ environment               = "production"
 mongo_username            = "admin-matlau"
 mongo_host                = "mattewcylau-5ltcp.mongodb.net"
 mongo_database_name       = "node-aws-fargate-app"
-mongo_password_secret_arn = <MongoPassword Secret ARN>
 ```
 
 ## Deploy

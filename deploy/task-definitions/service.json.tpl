@@ -43,7 +43,7 @@
     ],
     "secrets": [{
       "name": "MONGO_PASSWORD",
-      "valueFrom": "${mongo_password_secret_arn}"
+      "valueFrom": "${mongo_password_secret_manager_secret}"
     }],
     "ulimits": [
       {

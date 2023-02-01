@@ -17,6 +17,3 @@ variable "mongo_username" {}
 variable "mongo_host" {}
 
 variable "mongo_database_name" {}
-
-variable "mongo_password_secret_arn" {}
-

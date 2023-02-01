@@ -23,32 +23,38 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
 
   policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-        "Effect": "Allow",
-        "Action": [
-            "ecr:GetAuthorizationToken",
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Effect":"Allow",
+         "Action":[
             "ecr:BatchCheckLayerAvailability",
             "ecr:GetDownloadUrlForLayer",
             "ecr:BatchGetImage",
             "logs:CreateLogStream",
             "logs:PutLogEvents"
-        ],
-        "Resource": [
-          "${aws_ecr_repository.node_app.arn}"
-        ]
-    },
-     {
-      "Effect": "Allow",
-      "Action": [
-        "secretsmanager:GetSecretValue"
-      ],
-      "Resource": [
-        "${var.mongo_password_secret_arn}"
-      ]
-    }
-  ]
+         ],
+         "Resource":[
+            "${aws_ecr_repository.node_app.arn}"
+         ]
+      },
+      {
+         "Action":[
+            "ecr:GetAuthorizationToken"
+         ],
+         "Effect":"Allow",
+         "Resource":"*"
+      },
+      {
+         "Effect":"Allow",
+         "Action":[
+            "secretsmanager:GetSecretValue"
+         ],
+         "Resource":[
+            "${data.aws_secretsmanager_secret.mongo_password_secret.id}"
+         ]
+      }
+   ]
 }
 EOF
 }
