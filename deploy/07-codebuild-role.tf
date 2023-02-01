@@ -67,13 +67,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         {
             "Effect": "Allow",
             "Action": [
-                "ecr:GetAuthorizationToken"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
                 "secretsmanager:GetRandomPassword",
                 "secretsmanager:GetResourcePolicy",
                 "secretsmanager:GetSecretValue",

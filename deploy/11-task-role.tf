@@ -35,7 +35,9 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
             "logs:CreateLogStream",
             "logs:PutLogEvents"
         ],
-        "Resource": "*"
+        "Resource": [
+          "${aws_ecr_repository.node_app.arn}"
+        ]
     },
      {
       "Effect": "Allow",
